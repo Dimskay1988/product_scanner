@@ -23,11 +23,6 @@
 
     # always loaded
     'data': [
-        'security/security.xml',
-        'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
-        'views/idle_control_menu.xml',
     ],
     'application': True,
     'license': 'LGPL-3'
