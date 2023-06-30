@@ -19,15 +19,15 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'sale'],
+    'depends': ['base'],
 
     # always loaded
     'data': [
-        # 'security/security.xml',
-        # 'security/ir.model.access.csv',
-        # 'views/views.xml',
-        # 'views/templates.xml',
-        # 'views/idle_control_menu.xml',
+        'security/security.xml',
+        'security/ir.model.access.csv',
+        'views/views.xml',
+        'views/templates.xml',
+        'views/idle_control_menu.xml',
     ],
     'application': True,
     'license': 'LGPL-3'
