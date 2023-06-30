@@ -17,4 +17,5 @@ class MyModuleController(http.Controller):
                 'price': product.price,
                 # Добавьте все нужные поля продукта в словарь
             })
+        print(product_data)
         return json.dumps(product_data)
