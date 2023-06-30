@@ -6,7 +6,7 @@ from odoo.http import serialize_exception
 
 
 class ScanerControl(http.Controller):
-    @http.route('/my_module/products', type='http', auth='public', methods=['GET'])
+    @http.route('/scaner/products', type='http', auth='public', methods=['GET'])
     def get_products(self, **kwargs):
         products = request.env['product.product'].sudo().search([])
         product_data = []
@@ -14,7 +14,7 @@ class ScanerControl(http.Controller):
             product_data.append({
                 'name': product.name,
                 'description': product.description,
-                'price': product.price,
+                'price': product.list_price,
             })
         return json.dumps(product_data)
 
