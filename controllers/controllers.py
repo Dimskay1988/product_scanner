@@ -2,36 +2,25 @@
 from odoo import http
 from odoo.http import request
 import json
+from odoo.addons.web.controllers.main import serialize_exception
+
 
 
 class IdleControl(http.Controller):
-#     @http.route('/idle/get_all_alerts', auth='user', type='json')
-#     def all_alerts(self, **kw):
-#         alert_rec = http.request.env['idle_control.idle_control'].sudo().search([])
-#         alerts = []
-#         for rec in alert_rec:
-#             alerts.append({
-#                 'action': rec.action,
-#                 'date': rec.date,
-#                 'area': rec.area,
-#                 'photo': rec.photo,
-#             })
-#
-#         return alerts
-#
-#     @http.route('/idle/create_alert', auth='user', type='json')
-#     def create(self, **rec):
-#         if http.request.render:
-#             if rec['action']:
-#                 vals = {
-#                     'action': rec['action'],
-#                     'date': rec['date'],
-#                     'area': rec['area'],
-#                     'photo': rec['photo'],
-#                 }
-#                 new_alert = request.env['idle_control.idle_control'].sudo().create(vals)
-#                 args = {'success': True, 'message': 'Success', 'id': new_alert.id}
-#         return args
+    @http.route('/my_module/products', type='http', auth='public', methods=['GET'])
+    @serialize_exception
+    def get_products(self, **kwargs):
+        products = request.env['product.product'].sudo().search([])
+        product_data = []
+        for product in products:
+            product_data.append({
+                'name': product.name,
+                'description': product.description,
+                'price': product.price,
+                # Добавьте все нужные поля продукта в словарь
+            })
+        return json.dumps(product_data)
+
 
     @http.route('/scaner/ping', type='json', auth='public')
     def ping(self):
