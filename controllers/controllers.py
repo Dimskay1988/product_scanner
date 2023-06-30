@@ -5,10 +5,8 @@ import json
 from odoo.http import serialize_exception
 
 
-
-class IdleControl(http.Controller):
+class ScanerControl(http.Controller):
     @http.route('/my_module/products', type='http', auth='public', methods=['GET'])
-    @serialize_exception
     def get_products(self, **kwargs):
         products = request.env['product.product'].sudo().search([])
         product_data = []
@@ -19,7 +17,6 @@ class IdleControl(http.Controller):
                 'price': product.price,
             })
         return json.dumps(product_data)
-
 
     @http.route('/scaner/ping', type='json', auth='public')
     def ping(self):
