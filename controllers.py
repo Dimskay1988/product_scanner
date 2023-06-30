@@ -1,10 +1,11 @@
+# -*- coding: utf-8 -*-
 from odoo import http
 from odoo.http import request
 import json
 from odoo.addons.web.controllers.main import serialize_exception
 
 
-class MyModuleController(http.Controller):
+class ScanerController(http.Controller):
 
     @http.route('/scaner/products', type='http', auth='public', methods=['GET'])
     @serialize_exception
@@ -17,8 +18,8 @@ class MyModuleController(http.Controller):
                 'description': product.description,
                 'price': product.price,
             })
-        print(product_data)
         return json.dumps(product_data)
+
 
     @http.route('/scaner/ping', type='json', auth='public')
     def ping(self):
