@@ -2,7 +2,6 @@
 from odoo import http
 from odoo.http import request
 import json
-from odoo.http import serialize_exception
 
 
 class ScanerControl(http.Controller):
@@ -12,6 +11,7 @@ class ScanerControl(http.Controller):
         product_data = []
         for product in products:
             product_data.append({
+                'id': product.id,
                 'name': product.name,
                 'description': product.description,
                 'price': product.list_price,
