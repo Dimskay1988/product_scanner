@@ -15,6 +15,7 @@ class ScanerControl(http.Controller):
                 'name': product.name,
                 'description': product.description,
                 'price': product.list_price,
+                'default_code': product.default_code,
             })
         return json.dumps(product_data)
 
