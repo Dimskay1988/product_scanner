@@ -18,6 +18,8 @@ class ScanerControl(http.Controller):
                 'price': product.list_price,
                 'default_code': product.default_code,
                 'barcode': product.barcode,
+                'responsible': product.responsible_id.name if product.responsible_id else None,
+                'INV_№': product.default_code,
             })
         return json.dumps(product_data)
 
